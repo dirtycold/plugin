@@ -7,10 +7,6 @@
 
 #pragma once
 
-//=============
-//==  Boost  ==
-//=============
-#include <boost/noncopyable.hpp>
 #include "Version.h"
 
 //===========
@@ -27,7 +23,7 @@ namespace Plugin
       * Your facade factory should be created using the macro
       * PLUGIN_FACTORY_DECLARATION(T) and PLUGIN_FACTORY_DEFINITION(T).
       */
-    class IPlugin : private boost::noncopyable
+    class IPlugin
     {
     public:
         /// Get plugin name
@@ -47,5 +43,10 @@ namespace Plugin
           * of the concrete plugin library.
           */
         virtual ~IPlugin() {}
+
+    protected:
+        IPlugin () = default;
+        IPlugin (const IPlugin&) = delete;
+        IPlugin& operator= (const IPlugin&) = delete;
     };
 }

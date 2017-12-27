@@ -12,11 +12,6 @@
 //==============
 #include "Plugin/PluginFactory.h"
 
-//=============
-//==  Boost  ==
-//=============
-#include <boost/noncopyable.hpp>
-
 //===========
 //==  STD  ==
 //===========
@@ -41,7 +36,7 @@ namespace Plugin
       * @tparam T Interface type of the concrete plugin
       */
     template<class T>
-    class PluginLoader : private boost::noncopyable
+    class PluginLoader
     {
     public:
         /// Constructor
@@ -263,5 +258,9 @@ namespace Plugin
         library_handle libHandle_;
         // Error message
         std::string errorMsg_;
+
+    protected:
+        PluginLoader (const PluginLoader&) = delete;
+        PluginLoader& operator= (const PluginLoader&) = delete;
     };
 }
