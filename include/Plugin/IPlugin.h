@@ -7,15 +7,11 @@
 
 #pragma once
 
-//===================
-//==  Versionning  ==
-//===================
-#include "Versionning/Version.h"
-
 //=============
 //==  Boost  ==
 //=============
 #include <boost/noncopyable.hpp>
+#include "Version.h"
 
 //===========
 //==  STD  ==
