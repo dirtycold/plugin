@@ -27,10 +27,10 @@ namespace Plugin
     {
     public:
         /// Get plugin name
-        virtual const std::string& iGetPluginName() const = 0;
+        virtual const std::string& name() const = 0;
 
         /// Get plugin version
-        virtual const Vers::Version& iGetPluginVersion() const = 0;
+        virtual const Version& version() const = 0;
 
     protected:
         /// Destructor
