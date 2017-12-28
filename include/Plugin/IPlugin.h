@@ -33,6 +33,7 @@ namespace Plugin
         virtual const Version& version() const = 0;
 
     protected:
+        IPlugin () = default;
         /// Destructor
         /**
           * This destructor is declared protected
@@ -45,7 +46,6 @@ namespace Plugin
         virtual ~IPlugin() {}
 
     protected:
-        IPlugin () = default;
         IPlugin (const IPlugin&) = delete;
         IPlugin& operator= (const IPlugin&) = delete;
     };
