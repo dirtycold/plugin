@@ -53,7 +53,7 @@ namespace Plugin
         explicit PluginLoader(const std::string& name = "")
             : name_(name),
               plugin_(NULL),
-              libHandle_(0)
+              libHandle_(nullptr)
         {
             // Empty
         }
