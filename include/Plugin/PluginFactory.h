@@ -10,7 +10,7 @@
 //==============
 //==  Plugin  ==
 //==============
-#include "Plugin/ExportAPI.h"
+#include "ExportAPI.h"
 
 /// Function name of the Plugin factory to create Facade instance
 #define PLUGIN_FACTORY_CREATE "createPluginFacade"

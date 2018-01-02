@@ -10,7 +10,7 @@
 //==============
 //==  Plugin  ==
 //==============
-#include "Plugin/PluginFactory.h"
+#include "PluginFactory.h"
 
 //===========
 //==  STD  ==
