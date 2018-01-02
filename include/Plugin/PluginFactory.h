@@ -39,7 +39,7 @@ PLUGIN_API void destroyPluginFacade();              \
   *        T is not required to be in the global namespace.
   */
 #define PLUGIN_FACTORY_DEFINITION(T)    \
-T* globalInstance = NULL;               \
+T* globalInstance = nullptr;            \
 T* createPluginFacade()                 \
 {                                       \
     if (!globalInstance)                \
@@ -51,6 +51,6 @@ void destroyPluginFacade()              \
     if (globalInstance)                 \
     {                                   \
         delete globalInstance;          \
-        globalInstance = NULL;          \
+        globalInstance = nullptr;       \
     }                                   \
 }

@@ -51,9 +51,7 @@ namespace Plugin
           * @param name Filename of the concrete plugin
           */
         explicit PluginLoader(const std::string& name = "")
-            : name_(name),
-              plugin_(NULL),
-              libHandle_(nullptr)
+            : name_(name)
         {
             // Empty
         }
@@ -96,7 +94,7 @@ namespace Plugin
                 if (plugin_)
                 {
                     callFunction<void>(PLUGIN_FACTORY_DESTROY);
-                    plugin_ = NULL;
+                    plugin_ = nullptr;
                 }
                 res = unloadLibrary();
                 if (res)
@@ -111,7 +109,7 @@ namespace Plugin
           */
         bool isLoaded() const
         {
-            return (libHandle_ != 0);
+            return (libHandle_ != nullptr);
         }
 
         /// Get a pointer to the plugin interface
@@ -123,7 +121,7 @@ namespace Plugin
         T* getPluginInstance()
         {
             if (!isLoaded())
-                return NULL;
+                return nullptr;
             if (!plugin_)
                 plugin_ = callFunction<T*>(PLUGIN_FACTORY_CREATE);
             return plugin_;
@@ -200,12 +198,12 @@ namespace Plugin
         bool loadLibrary()
         {
             libHandle_ = LoadLibraryA(name_.c_str());
-            return libHandle_ != 0;
+            return libHandle_ != nullptr;
         }
 
         bool unloadLibrary()
         {
-            return FreeLibrary(libHandle_) != 0;
+            return FreeLibrary(libHandle_) != nullptr;
         }
 
         generic_function_ptr getFunction(const char *function_name)
@@ -218,7 +216,7 @@ namespace Plugin
             libHandle_ = dlopen(name_.c_str(), RTLD_LAZY);
             if (!libHandle_)
                 saveErrorMsg();
-            return libHandle_ != NULL;
+            return libHandle_ != nullptr;
         }
 
         bool unloadLibrary()
@@ -253,9 +251,9 @@ namespace Plugin
         // Name or path of the plugin
         std::string name_;
         // Pointer to the plugin facade
-        T* plugin_;
+        T* plugin_ = nullptr;
         // OS specific library handle
-        library_handle libHandle_;
+        library_handle libHandle_ = nullptr;
         // Error message
         std::string errorMsg_;
 
